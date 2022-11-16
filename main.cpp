@@ -31,7 +31,7 @@ int main(){
         file_input >> line;
         
         numberOfCategories = stoi(line);
-        cout << numberOfCategories << endl;
+        //cout << numberOfCategories << endl;
         
         //vector<pair<string, vector< pair<string, int> >>>;
         
@@ -63,19 +63,20 @@ int main(){
             categoriesAlongWithSubcategoriesAndWorkers.push_back(make_pair(nameOfCategory,temp_subcategoriesAndWorkers ));
         }
         categoriesAlongWithSubcategoriesAndWorkers.resize(numberOfCategories);
-
+        break;
         
         //cout << line << endl;
     }
- 
+    
     // Close the File
     file_input.close();
+
     // cout << (categoriesAlongWithSubcategoriesAndWorkers.size())<< endl;
     vector<pair<string, vector<pair<string, vector<pair<string, string>>>> >>::iterator it;
     // cout << numberOfCategories << endl;
-    // for(it = categoriesAlongWithSubcategoriesAndWorkers.begin(); it < categoriesAlongWithSubcategoriesAndWorkers.end(); it++){
-    //     cout << 1 << endl;
-    // }
+    for(it = categoriesAlongWithSubcategoriesAndWorkers.begin(); it < categoriesAlongWithSubcategoriesAndWorkers.end(); it++){
+        cout << 1 << endl;
+    }
     // cout << (categoriesAlongWithSubcategoriesAndWorkers[1].second)[].second.size()<< endl;
 
     // Node *roots = new Node[n];  //for reference - Genes *genes=new Genes[10];

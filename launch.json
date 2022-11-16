@@ -6,7 +6,7 @@
       "type": "cppdbg",
       "request": "launch",
       "args": [],
-      "stopAtEntry": false,
+      "stopAtEntry": true,
       "externalConsole": true,
       "cwd": "c:/Users/aryam/OneDrive/Desktop/ruralClap",
       "program": "c:/Users/aryam/OneDrive/Desktop/ruralClap/build/Debug/outDebug",
