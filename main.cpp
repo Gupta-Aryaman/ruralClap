@@ -23,7 +23,7 @@ int main(){
     string phoneNumber;
 
     vector<string> categories;
-    vector<pair<string, vector<pair<string, vector<pair<string, string>>>> >> categoriesAlongWithSubcategoriesAndWorkers;
+    vector<pair<string, vector<pair<string, pair<Node*, Node*>>> >> categoriesAlongWithSubcategoriesAndWorkers;
     
     while (file_input) {
  
@@ -43,26 +43,33 @@ int main(){
             
             numberOfSubcategories = stoi(line);
             // cout << numberOfSubcategories << endl;
-            vector<pair<string, vector<pair<string, string>>>> temp_subcategoriesAndWorkers;
-            for(int j = 1; j <= numberOfSubcategories; j++){
+            vector<pair<string, pair<Node*, Node*>>> temp_subcategoriesAndWorkers;
+
+            vector<Node*> roots(1000, NULL);   //usable indices only 24 ie half of 50
+
+            for(int j = 0; j < numberOfSubcategories; j++){
                 file_input >> nameOfSubcategory;
                 file_input >> line;
                 // cout << line << endl;
                 numberOfWorkersInACategory = stoi(line);
-                vector<pair<string, string>> temp_workers;
-                for(int k = 1; k <= numberOfWorkersInACategory; k++){
+                vector<pair<Node*, Node*>> temp_workers;
+
+                for(int k = 0; k < numberOfWorkersInACategory; k++){
                     file_input >> nameOfWorker;
                     file_input >> phoneNumber;
+                    roots[j] = insert(roots[j], k, nameOfWorker, phoneNumber);
+                    //inOrder(roots[k]); cout << endl;
                     // cout << phoneNumber << endl;
-                    temp_workers.push_back(make_pair(nameOfWorker, phoneNumber));
+                    //temp_workers.push_back(make_pair(nameOfWorker, phoneNumber));
                 }
-                temp_workers.resize(numberOfWorkersInACategory);
-                temp_subcategoriesAndWorkers.push_back(make_pair(nameOfSubcategory, temp_workers));
+
+                //temp_workers.resize(numberOfWorkersInACategory);
+                temp_subcategoriesAndWorkers.push_back(make_pair(nameOfSubcategory, make_pair(roots[j], roots[50-j-1])));
             }
-            temp_subcategoriesAndWorkers.resize(numberOfSubcategories);
+            //temp_subcategoriesAndWorkers.resize(numberOfSubcategories);
             categoriesAlongWithSubcategoriesAndWorkers.push_back(make_pair(nameOfCategory,temp_subcategoriesAndWorkers ));
         }
-        categoriesAlongWithSubcategoriesAndWorkers.resize(numberOfCategories);
+        //categoriesAlongWithSubcategoriesAndWorkers.resize(numberOfCategories);
         break;
         
         //cout << line << endl;
@@ -72,25 +79,13 @@ int main(){
     file_input.close();
 
     // cout << (categoriesAlongWithSubcategoriesAndWorkers.size())<< endl;
-    vector<pair<string, vector<pair<string, vector<pair<string, string>>>> >>::iterator it;
+    vector<pair<string, vector<pair<string, pair<Node*, Node*>>> >>::iterator it;
     // cout << numberOfCategories << endl;
     for(it = categoriesAlongWithSubcategoriesAndWorkers.begin(); it < categoriesAlongWithSubcategoriesAndWorkers.end(); it++){
         cout << 1 << endl;
     }
-    // cout << (categoriesAlongWithSubcategoriesAndWorkers[1].second)[].second.size()<< endl;
 
-    // Node *roots = new Node[n];  //for reference - Genes *genes=new Genes[10];
-    
-    // /* Constructing tree given in
-    // the above figure */
-    // root = insert(root, 10);
-    // root = insert(root, 20);
-    // root = insert(root, 30);
-    // root = insert(root, 40);
-    // root = insert(root, 50);
-    // root = insert(root, 25);
-
-    // inOrder(root);
+    cout << getBalance((categoriesAlongWithSubcategoriesAndWorkers[0].second)[0].second.first);
     
     return 0;
 }

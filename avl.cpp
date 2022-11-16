@@ -33,10 +33,12 @@ int max(int a, int b)
 /* Helper function that allocates a
    new node with the given key and
    NULL left and right pointers. */
-Node* newNode(int key)
+Node* newNode(int key, string name, string number)
 {
     Node* node = new Node();
     node->key = key;
+    node->name = name;
+    node->phone_number = number;
     node->left = NULL;
     node->right = NULL;
     node->height = 1; // new node is initially
@@ -99,16 +101,16 @@ int getBalance(Node *N)
 // Recursive function to insert a key
 // in the subtree rooted with node and
 // returns the new root of the subtree.
-Node* insert(Node* node, int key)
+Node* insert(Node* node, int key, string name, string number)
 {
     /* 1. Perform the normal BST insertion */
     if (node == NULL)
-        return(newNode(key));
+        return(newNode(key, name, number));
  
     if (key < node->key)
-        node->left = insert(node->left, key);
+        node->left = insert(node->left, key, name, number);
     else if (key > node->key)
-        node->right = insert(node->right, key);
+        node->right = insert(node->right, key, name, number);
     else // Equal keys are not allowed in BST
         return node;
  
@@ -155,7 +157,17 @@ void inOrder(Node *root)
     if(root != NULL)
     {
         inOrder(root->left);
-        cout << root->key << " ";
+        cout << root->name << " ";
         inOrder(root->right);
+    }
+}
+
+void postOrder(Node *root)
+{
+    if(root != NULL)
+    {
+        postOrder(root->left);
+        postOrder(root->right);
+        cout << root->name << " ";
     }
 }
