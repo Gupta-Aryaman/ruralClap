@@ -1,0 +1,43 @@
+while(1)
+	{
+		printf("\n");
+		printf("1.Insert\n");
+		printf("2.Delete\n");
+		printf("3.Inorder Traversal\n");
+		printf("4.Preorder Traversal\n");
+		printf("5.Postorder Traversal\n");
+		printf("6.Display\n");
+		printf("7.Quit\n");
+		printf("Enter your choice : ");
+		scanf("%d",&choice);
+
+		switch(choice)
+		{
+		 case 1:
+			printf("Enter the number to be inserted : ");
+			scanf("%d",&num);
+			insert(num);
+			break;
+		 case 2:
+			printf("Enter the number to be deleted : ");
+			scanf("%d",&num);
+			del(num);
+			break;
+		 case 3:
+			inorder(root);
+			break;
+		 case 4:
+			preorder(root);
+			break;
+		 case 5:
+			postorder(root);
+			break;
+		 case 6:
+			display(root,1);
+			break;
+		 case 7:
+            break;
+		 default:
+			printf();
+		}/*End of switch */
+	}
