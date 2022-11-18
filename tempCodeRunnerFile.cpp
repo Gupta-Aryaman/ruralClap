@@ -1,3 +1,5 @@
-for(it = categoriesAlongWithSubcategoriesAndWorkers.begin(); it < categoriesAlongWithSubcategoriesAndWorkers.end(); it++){
-        cout << 1 << endl;
+Node* p = NULL;  
+    for(int i = 0; i < 100; i++){
+        p = new Node();
+        roots.push_back(p);
     }
