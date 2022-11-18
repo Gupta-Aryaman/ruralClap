@@ -12,6 +12,27 @@ std::ostream& bold_off(std::ostream& os)
     return os << "\e[0m";
 }
 
+vector<pair<string, vector<pair<string, pair<Node*, Node*>>> >> categoriesAlongWithSubcategoriesAndWorkers;
+
+
+// void removeFromAvailable(int c1, int c2, int c3, Node* node){
+//     categoriesAlongWithSubcategoriesAndWorkers[c1].second[c2].second.first = deleteNode(categoriesAlongWithSubcategoriesAndWorkers[c1].second[c2].second.first, c3);
+// }
+
+void insertIntoAvailable(int c1, int c2){
+    categoriesAlongWithSubcategoriesAndWorkers[c1].second[c2].second.first = insert(categoriesAlongWithSubcategoriesAndWorkers[c1].second[c2].second.first, categoriesAlongWithSubcategoriesAndWorkers[c1].second[c2].second.second->key, categoriesAlongWithSubcategoriesAndWorkers[c1].second[c2].second.second->name, categoriesAlongWithSubcategoriesAndWorkers[c1].second[c2].second.second->phone_number);
+
+}
+
+void removeFromUnavailable(int c1, int c2){
+    categoriesAlongWithSubcategoriesAndWorkers[c1].second[c2].second.second = NULL;
+
+}
+
+void insertIntoUnavailable(int c1, int c2){
+
+}
+
 
 
 int main(){
@@ -39,14 +60,15 @@ int main(){
 
     int z = 0;
 
-    vector<pair<pair<string, pair<Node *, Node *>>, Node*>> arrWithSelectedWorker;
+    //vector<pair<pair<string, pair<Node *, Node *>>, Node*>> arrWithSelectedWorker;
+    vector<pair<pair<int, int>, int>> arrWithSelectedWorker;
     // arrWithSelectedWorker.resize(20);
-    arrWithSelectedWorker.reserve(20);
-    int len_arrWithSelectedWorker = 0;
+    //arrWithSelectedWorker.reserve(20);
+    //int len_arrWithSelectedWorker = 0;
    // vector<pair<Node*, Node*>>::iterator iterator_arrWithSelectedWorker;
 
     vector<string> categories;
-    vector<pair<string, vector<pair<string, pair<Node*, Node*>>> >> categoriesAlongWithSubcategoriesAndWorkers;
+    
     
     vector<Node*> roots; 
     vector<Node*>::iterator it;
@@ -106,27 +128,17 @@ int main(){
                     //temp_workers.push_back(make_pair(nameOfWorker, phoneNumber));
                 }
                 
-
-                //temp_workers.resize(numberOfWorkersInACategory);
                 temp_subcategoriesAndWorkers.push_back(make_pair(nameOfSubcategory, make_pair(roots[index], roots[1000-index-1])));
                 index++;
             }
-            //temp_subcategoriesAndWorkers.resize(numberOfSubcategories);
             categoriesAlongWithSubcategoriesAndWorkers.push_back(make_pair(nameOfCategory,temp_subcategoriesAndWorkers ));
         }
-        //categoriesAlongWithSubcategoriesAndWorkers.resize(numberOfCategories);
         break;
-
-        //cout << line << endl;
     }
     
     // Close the File
     file_input.close();
 
-    // cout << getBalance((categoriesAlongWithSubcategoriesAndWorkers[0].second)[0].second.second);
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
     begin:
     int choice1;
     cout <<endl<<bold_on<< "Categories" <<bold_off<<endl;
@@ -146,10 +158,10 @@ int main(){
     cout << "Enter your Choice: ";
     cin >> choice2;
 
-    // if(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second!=NULL){
-    //     cout <<bold_on<< "Worker already selected from the category, select another category or free the worker first!" <<bold_off<< endl <<endl;
-    //     goto switchcase;
-    // }
+    if(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second!=NULL){
+        cout <<bold_on<< "Worker already selected from the category, select another category or free the worker first!" <<bold_off<< endl <<endl;
+        goto switchcase;
+    }
 
     cout <<endl<<bold_on<< "Available Workers" <<bold_off<<endl;
     inOrder(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.first);
@@ -171,8 +183,11 @@ int main(){
     //search(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second, choice3)
     cout << search(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second, choice3) << endl; /////
     
-    arrWithSelectedWorker.insert(arrWithSelectedWorker.begin()+len_arrWithSelectedWorker ,make_pair(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2], search(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second, choice3)));
-    len_arrWithSelectedWorker++;
+    //arrWithSelectedWorker.insert(arrWithSelectedWorker.begin()+len_arrWithSelectedWorker ,make_pair(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2], search(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second, choice3)));
+    
+    arrWithSelectedWorker.push_back(make_pair(make_pair(choice1, choice2), choice3));
+
+
     //cout << &categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second << endl;
     cout <<endl<<bold_on<< "Selected By You:" <<bold_off<<endl;
     inOrderForSelected(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second);
@@ -195,31 +210,26 @@ int main(){
             //vector<std::pair<std::pair<std::string, std::pair<Node *, Node *>>, Node *>>::iterator element = arrWithSelectedWorker.begin(); 
             z = 0;
             for(auto & element : arrWithSelectedWorker){
-                if(z<len_arrWithSelectedWorker)
-                    {cout << z++ <<". "<< element.second->name<< endl;
-                    z++;}
-                else
-                    break;
+                cout <<z  << ". " << categoriesAlongWithSubcategoriesAndWorkers[element.first.first].second[element.first.second].second.second->name << endl;
+                z++;
             }
             cout << "Enter the key to be deleted" << endl;
             cin >> choice5;
             cout << endl;
 
-            arrWithSelectedWorker[choice5].first.second.first = insert(arrWithSelectedWorker[choice5].first.second.first, arrWithSelectedWorker[choice5].first.second.second->key, arrWithSelectedWorker[choice5].first.second.second->name, arrWithSelectedWorker[choice5].first.second.second->phone_number);
-            delete arrWithSelectedWorker[choice5].second;
-            cout << arrWithSelectedWorker[choice5].second << endl;
+            //arrWithSelectedWorker[choice5].first.second.first = insert(arrWithSelectedWorker[choice5].first.second.first, arrWithSelectedWorker[choice5].first.second.second->key, arrWithSelectedWorker[choice5].first.second.second->name, arrWithSelectedWorker[choice5].first.second.second->phone_number);
+            insertIntoAvailable(arrWithSelectedWorker[choice5].first.first, arrWithSelectedWorker[choice5].first.second);
+            removeFromUnavailable(arrWithSelectedWorker[choice5].first.first, arrWithSelectedWorker[choice5].first.second);
+            //cout << arrWithSelectedWorker[choice5].second << endl;
             //cout << &(*(arrWithSelectedWorker[choice5].second)) << endl;
             arrWithSelectedWorker.erase(find(arrWithSelectedWorker.begin(),arrWithSelectedWorker.end(),arrWithSelectedWorker[choice5]));
 
             goto switchcase;
         case 2:
             z = 0;
-            for(auto & element:arrWithSelectedWorker){
-                if(z<len_arrWithSelectedWorker)
-                {cout << "Category: " << (element.first.first) << " -> " <<bold_on<< element.second->name<<bold_off << ", " << element.second->phone_number << endl;
-                z++;}
-                else
-                    break;
+            for(auto & element : arrWithSelectedWorker){
+                cout <<z  << ". " << categoriesAlongWithSubcategoriesAndWorkers[element.first.first].second[element.first.second].second.second->name << endl;
+                z++;
             }
             cout << endl;
             goto switchcase;
