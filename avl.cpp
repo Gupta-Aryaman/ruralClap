@@ -309,7 +309,7 @@ void inOrderForSelected(Node *root)
     if(root != NULL)
     {
         inOrder(root->left);
-        cout << root->key << ". " << root->name <<endl <<", Phone Number: "<< root->phone_number<<" " << &root<< endl;
+        cout << root->key << ". " << root->name<<", Phone Number: "<< root->phone_number<<" " << &root<< endl;
         inOrder(root->right);
     }
 }

@@ -40,6 +40,9 @@ int main(){
     int z = 0;
 
     vector<pair<pair<string, pair<Node *, Node *>>, Node*>> arrWithSelectedWorker;
+    // arrWithSelectedWorker.resize(20);
+    arrWithSelectedWorker.reserve(20);
+    int len_arrWithSelectedWorker = 0;
    // vector<pair<Node*, Node*>>::iterator iterator_arrWithSelectedWorker;
 
     vector<string> categories;
@@ -151,7 +154,7 @@ int main(){
     cout <<endl<<bold_on<< "Available Workers" <<bold_off<<endl;
     inOrder(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.first);
     cout << endl;
-    postOrder(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.first);
+    //postOrder(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.first);
     cout << endl << bold_on << "Non-Available Workers" << bold_off << endl;
     inOrder(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second);
 
@@ -165,12 +168,16 @@ int main(){
         categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.first = deleteNode(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.first, choice3);
     }
     
-    arrWithSelectedWorker.push_back(make_pair(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2], categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second));
-    cout << &categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second << endl;
+    //search(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second, choice3)
+    cout << search(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second, choice3) << endl; /////
+    
+    arrWithSelectedWorker.insert(arrWithSelectedWorker.begin()+len_arrWithSelectedWorker ,make_pair(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2], search(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second, choice3)));
+    len_arrWithSelectedWorker++;
+    //cout << &categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second << endl;
     cout <<endl<<bold_on<< "Selected By You:" <<bold_off<<endl;
     inOrderForSelected(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.second);
     cout << endl;
-    inOrder(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.first);
+    //inOrder(categoriesAlongWithSubcategoriesAndWorkers[choice1].second[choice2].second.first);
     cout << endl;
 
     switchcase:
@@ -185,28 +192,34 @@ int main(){
 
     switch(choice4){
         case 1:
-            
-            for(auto & element:arrWithSelectedWorker){
-                cout << z++ <<". "<< element.second->name<< endl;
+            //vector<std::pair<std::pair<std::string, std::pair<Node *, Node *>>, Node *>>::iterator element = arrWithSelectedWorker.begin(); 
+            z = 0;
+            for(auto & element : arrWithSelectedWorker){
+                if(z<len_arrWithSelectedWorker)
+                    {cout << z++ <<". "<< element.second->name<< endl;
+                    z++;}
+                else
+                    break;
             }
             cout << "Enter the key to be deleted" << endl;
             cin >> choice5;
             cout << endl;
 
             arrWithSelectedWorker[choice5].first.second.first = insert(arrWithSelectedWorker[choice5].first.second.first, arrWithSelectedWorker[choice5].first.second.second->key, arrWithSelectedWorker[choice5].first.second.second->name, arrWithSelectedWorker[choice5].first.second.second->phone_number);
-            //cout << &(arrWithSelectedWorker[choice5].first.second.second) << endl;
-            arrWithSelectedWorker[choice5].second = NULL;
-            cout << &arrWithSelectedWorker[choice5].second << endl;
+            delete arrWithSelectedWorker[choice5].second;
+            cout << arrWithSelectedWorker[choice5].second << endl;
+            //cout << &(*(arrWithSelectedWorker[choice5].second)) << endl;
             arrWithSelectedWorker.erase(find(arrWithSelectedWorker.begin(),arrWithSelectedWorker.end(),arrWithSelectedWorker[choice5]));
 
-            z = 0;
-            for(auto & element:arrWithSelectedWorker){
-                cout << z++ <<". "<< element.second->name<< endl;
-            }
             goto switchcase;
         case 2:
+            z = 0;
             for(auto & element:arrWithSelectedWorker){
-                cout << "Category: " << (element.first.first) << " -> " <<bold_on<< element.second->name<<bold_off << ", " << element.second->phone_number << endl;
+                if(z<len_arrWithSelectedWorker)
+                {cout << "Category: " << (element.first.first) << " -> " <<bold_on<< element.second->name<<bold_off << ", " << element.second->phone_number << endl;
+                z++;}
+                else
+                    break;
             }
             cout << endl;
             goto switchcase;

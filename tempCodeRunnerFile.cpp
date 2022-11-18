@@ -1,5 +1,4 @@
-Node* p = NULL;  
-    for(int i = 0; i < 100; i++){
-        p = new Node();
-        roots.push_back(p);
-    }
+z = 0;
+            // for(auto & element:arrWithSelectedWorker){
+            //     cout << z++ <<". "<< element.second->name<< endl;
+            // }
