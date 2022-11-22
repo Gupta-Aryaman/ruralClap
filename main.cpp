@@ -55,7 +55,7 @@ int main(){
     vector<Node*> roots; 
     vector<Node*>::iterator it;
     Node * p = NULL;  
-    for(int i = 0; i < 1000; i++){
+    for(int i = 0; i < 5000; i++){
         roots.push_back(new Node());
     }
     for(it = roots.begin(); it < roots.end(); it++){
@@ -91,7 +91,7 @@ int main(){
 
                 }
                 
-                temp_subcategoriesAndWorkers.push_back(make_pair(nameOfSubcategory, make_pair(roots[index], roots[1000-index-1])));
+                temp_subcategoriesAndWorkers.push_back(make_pair(nameOfSubcategory, make_pair(roots[index], roots[5000-index-1])));
                 index++;
             }
             categoriesAlongWithSubcategoriesAndWorkers.push_back(make_pair(nameOfCategory,temp_subcategoriesAndWorkers ));

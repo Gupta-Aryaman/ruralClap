@@ -28,7 +28,7 @@ Hong 8564774373
 Kong 8376446778 
 Marcia 8758437654 
 
-Washing_Machine
+Washing-Machine
 10
 Shyam 9487567386
 Raju 9877463876
@@ -54,9 +54,9 @@ Yuvraj  9879464656
 
 
 
-Cleaning and Pest Control
+Cleaning-and-Pest-Control
 4
-Bathroom and kitchen
+Bathroom-and-kitchen
 10
 Mac 7515646451 
 Dominique 6485646584 
@@ -69,7 +69,7 @@ Rohan 8794466567
 Ernestine 9846541615 
 Rishabh 9874452515
 
-Sofa and Carpet Cleaning
+Sofa-and-Carpet-Cleaning
 12
 Sunil 7979958021
 Surya 7439896639
@@ -84,7 +84,7 @@ Ashwini 6127947422
 Shubham 7931323481
 Anil 7193720918
 
-Pest Control
+Pest-Control
 9
 Siraj 7979707410
 Mohammed 8847024904
@@ -96,7 +96,7 @@ Dhoni  6120821316
 Mahendra 7247664621
 Lakshman 6808427928
 
-Full Home Cleaning
+Full-Home-Cleaning
 8
 Singh 6127908191
 Manveer 8070862097
@@ -111,7 +111,7 @@ Raina 7329885317
 
 
 Grooming
-4
+3
 Makeup
 11
 Shreekanth 8079719087
@@ -132,30 +132,15 @@ Zaheer 8079766867
 Nehra 8917742153
 Arshdeep 6801542904
 Ashok 6108653804
-Sandeep 61279 15207
-Yadav 61279 67137
-Cheteshwar 87080 46018
-Murli 87006 08154
-Vijay 61281 51288
-Pujara 67195 96843
+Sandeep 6127915207
+Yadav 6127967137
+Cheteshwar 8708046018
+Murli 8700608154
+Vijay 6128151288
+Pujara 6719596843
 
-Men Haircut
-13
-Sourav 6127982359
-Mukul 6754890520
-Ganguly 8112399172
-Karun 7192421298
-Naman 8917734136
-Nair 6311482417
-Ojha 8917788731
-Mongia 7887589122
-Manoj 6311166848
-Kedar 6218862310
-Shivam 6127926658
-Andy 6578282066
-Gaurav 8707353271
 
-Women Haircut
+Womens-Haircut
 8
 Heena 8918437392
 Neena 8911902642
@@ -165,9 +150,6 @@ Sherry 6128592873
 Nidhi  6127940286
 Isha   7979927155
 Gurpreet 6127954101
-
-
-
 
 Housekeeping
 3
