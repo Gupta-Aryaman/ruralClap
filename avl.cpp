@@ -7,7 +7,7 @@ class Node
     public:
         string name;
         string phone_number;
-        int key; //relative rating of the person
+        int key; //Relative rating of the person
         Node *left;
         Node *right;
         int height;

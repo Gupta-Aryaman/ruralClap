@@ -2,7 +2,7 @@
 #include "avl.cpp"
 using namespace std;
 
-//Change the color of the output text and make it bold
+//Change the color of the output text and make it bold - https://stackoverflow.com/questions/4053837/colorizing-text-in-the-console-with-c
 std::ostream& bold_on(std::ostream& os)
 {   
     return os << "\e[1m \x1B[31m";
@@ -51,7 +51,7 @@ int main(){
     vector<pair<pair<int, int>, int>> arrWithSelectedWorker;
     
     
-    //creating an array of Node* and initializing it to NULL line->55-63
+    //Creating an array of Node* and initializing it to NULL line->55-63
     vector<Node*> roots; 
     vector<Node*>::iterator it;
     Node * p = NULL;  
@@ -62,7 +62,7 @@ int main(){
         *it = NULL;
     }
 
-    //building the complete data structure by taking input from input.txt, line->66-102
+    //Building the complete data structure by taking input from input.txt, line->66-102
     while (file_input) {
         file_input >> line;
         

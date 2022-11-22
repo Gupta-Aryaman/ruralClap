@@ -1,0 +1,46 @@
+2
+Applicance-Repair       
+2                       
+Air-Conditioner         
+9
+Mac 9114415691
+Dominique 8221249450
+Tami 8059462153 
+Rosalie 9213465992 
+Marisol 8659832924 
+Harriet 7510617126 
+Raju 7510617126 
+Rohan 7510617126 
+Ernestine 7510617126 
+
+Laptop-Repair           
+12
+Trina 7510617126 
+Erin 7510617126 
+Tami 7510617126 
+Guy 7510617126 
+Jamison 7510617126 
+Bertie 7510617126 
+Cyrus 7510617126 
+Winford 7510617126 
+Pansy 7510617126 
+Hong 7510617126 
+Kong 7510617126 
+Marcia 7510617126 
+
+
+
+Salon-for-Men           
+1
+Shave                   
+10
+Mac 7510617126 
+Dominique 7510617126 
+Tami 7510617126 
+Aryaman 7510617126 
+Marisol 7510617126 
+Harriet 7510617126 
+Raju 7510617126 
+Rohan 7510617126 
+Ernestine 7510617126 
+Rishabh 7510617126 
