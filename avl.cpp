@@ -14,8 +14,7 @@ class Node
 
 };
  
-// A utility function to get the
-// height of the tree
+// A utility function to get the height of the tree
 int height(Node *N)
 {
     if (N == NULL)
@@ -23,16 +22,13 @@ int height(Node *N)
     return N->height;
 }
  
-// A utility function to get maximum
-// of two integers
+// A utility function to get maximum of two integers
 int max(int a, int b)
 {
     return (a > b)? a : b;
 }
  
-/* Helper function that allocates a
-   new node with the given key and
-   NULL left and right pointers. */
+// Helper function that allocates a new node with the given key and NULL left and right pointers. 
 Node* newNode(int key, string name, string number)
 {
     Node* node = new Node();
@@ -41,14 +37,11 @@ Node* newNode(int key, string name, string number)
     node->phone_number = number;
     node->left = NULL;
     node->right = NULL;
-    node->height = 1; // new node is initially
-                      // added at leaf
+    node->height = 1; // new node is initially added at leaf
     return(node);
 }
  
-// A utility function to right
-// rotate subtree rooted with y
-// See the diagram given above.
+// A utility function to right rotate subtree rooted with y See the diagram given above.
 Node *rightRotate(Node *y)
 {
     Node *x = y->left;
@@ -68,9 +61,7 @@ Node *rightRotate(Node *y)
     return x;
 }
  
-// A utility function to left
-// rotate subtree rooted with x
-// See the diagram given above.
+// A utility function to left rotate subtree rooted with x See the diagram given above.
 Node *leftRotate(Node *x)
 {
     Node *y = x->right;
@@ -98,9 +89,7 @@ int getBalance(Node *N)
     return height(N->left) - height(N->right);
 }
  
-// Recursive function to insert a key
-// in the subtree rooted with node and
-// returns the new root of the subtree.
+// Recursive function to insert a key in the subtree rooted with node and returns the new root of the subtree.
 Node* insert(Node* node, int key, string name, string number)
 {
     /* 1. Perform the normal BST insertion */
@@ -123,8 +112,7 @@ Node* insert(Node* node, int key, string name, string number)
         unbalanced */
     int balance = getBalance(node);
  
-    // If this node becomes unbalanced, then
-    // there are 4 cases
+    // If this node becomes unbalanced, then there are 4 cases
  
     // Left Left Case
     if (balance > 1 && key < node->left->key)
@@ -170,20 +158,15 @@ Node* deleteNode(Node* root, int key)
     if (root == NULL) 
         return root; 
   
-    // If the key to be deleted is smaller 
-    // than the root's key, then it lies
-    // in left subtree 
+    // If the key to be deleted is smaller  than the root's key, then it lies in left subtree 
     if ( key < root->key ) 
         root->left = deleteNode(root->left, key); 
   
-    // If the key to be deleted is greater 
-    // than the root's key, then it lies 
-    // in right subtree 
+    // If the key to be deleted is greater than the root's key, then it lies in right subtree 
     else if( key > root->key ) 
         root->right = deleteNode(root->right, key); 
   
-    // if key is same as root's key, then 
-    // This is the node to be deleted 
+    // if key is same as root's key, then This is the node to be deleted 
     else
     { 
         // node with only one child or no child 
@@ -201,18 +184,15 @@ Node* deleteNode(Node* root, int key)
                 root = NULL; 
             } 
             else // One child case 
-            *root = *temp; // Copy the contents of 
-                           // the non-empty child 
+            *root = *temp; // Copy the contents of the non-empty child 
             free(temp); 
         } 
         else
         { 
-            // node with two children: Get the inorder 
-            // successor (smallest in the right subtree) 
+            // node with two children: Get the inorder successor (smallest in the right subtree) 
             Node* temp = minValueNode(root->right); 
   
-            // Copy the inorder successor's 
-            // data to this node 
+            // Copy the inorder successor's data to this node 
             root->key = temp->key; 
   
             // Delete the inorder successor 
@@ -221,8 +201,7 @@ Node* deleteNode(Node* root, int key)
         } 
     } 
   
-    // If the tree had only one node
-    // then return 
+    // If the tree had only one node then return 
     if (root == NULL) 
     return root; 
   
@@ -230,35 +209,29 @@ Node* deleteNode(Node* root, int key)
     root->height = 1 + max(height(root->left), 
                            height(root->right)); 
   
-    // STEP 3: GET THE BALANCE FACTOR OF 
-    // THIS NODE (to check whether this 
-    // node became unbalanced) 
+    // STEP 3: GET THE BALANCE FACTOR OF THIS NODE (to check whether this node became unbalanced) 
     int balance = getBalance(root); 
   
     // If this node becomes unbalanced, 
     // then there are 4 cases 
   
     // Left Left Case 
-    if (balance > 1 && 
-        getBalance(root->left) >= 0) 
+    if (balance > 1 && getBalance(root->left) >= 0) 
         return rightRotate(root); 
   
     // Left Right Case 
-    if (balance > 1 && 
-        getBalance(root->left) < 0) 
+    if (balance > 1 && getBalance(root->left) < 0) 
     { 
         root->left = leftRotate(root->left); 
         return rightRotate(root); 
     } 
   
     // Right Right Case 
-    if (balance < -1 && 
-        getBalance(root->right) <= 0) 
+    if (balance < -1 && getBalance(root->right) <= 0) 
         return leftRotate(root); 
   
     // Right Left Case 
-    if (balance < -1 && 
-        getBalance(root->right) > 0) 
+    if (balance < -1 && getBalance(root->right) > 0) 
     { 
         root->right = rightRotate(root->right); 
         return leftRotate(root); 
@@ -267,15 +240,6 @@ Node* deleteNode(Node* root, int key)
     return root; 
 } 
 
-// Node* search(Node* root, string name){
-//     if(root==NULL)
-//         return NULL;
-//     if(root->name == name){
-//         return root;
-//     }
-//     root = search(root->left, name);
-//     root = search(root->right, name);
-// }
 
 Node* search(struct Node* root, int key)
 {
@@ -299,7 +263,7 @@ void inOrder(Node *root)
     if(root != NULL)
     {
         inOrder(root->left);
-        cout << root->key << ". " << root->name <<" " << &root << endl;
+        cout << root->key << ". " << root->name << endl;
         inOrder(root->right);
     }
 }
@@ -309,7 +273,7 @@ void inOrderForSelected(Node *root)
     if(root != NULL)
     {
         inOrder(root->left);
-        cout << root->key << ". " << root->name<<", Phone Number: "<< root->phone_number<<" " << &root<< endl;
+        cout << root->key << ". " << root->name<<", Phone Number: "<< root->phone_number<< endl;
         inOrder(root->right);
     }
 }
