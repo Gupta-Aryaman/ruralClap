@@ -1,5 +1,5 @@
 # The Rural Company
-Rural Company is an online home services platform. Launched never, Rural Company today operates worldwide. The platform helps customers book reliable & high quality services like beauty treatments, massages, haircuts, home cleaning, handymen, appliance repair, painting, pest control and more – delivered by trained professionals conveniently at home.
+Rural Company is an online home services platform. Launched never, Rural Company today operates worldwide. The platform helps customers book reliable & high quality services like beauty treatments, massages, haircuts, home cleaning, handymen, appliance repair, painting, pest control and more – delivered by trained professionals conveniently at home. <br />
 **The moto is to provide options of selecting different workers in categories and sub-categories.**
 
 ## Structure Used to Store Workers
